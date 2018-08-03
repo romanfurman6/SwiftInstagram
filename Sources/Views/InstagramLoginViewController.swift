@@ -126,6 +126,10 @@ extension InstagramLoginViewController: WKNavigationDelegate {
 
         let urlString = navigationAction.request.url!.absoluteString
 
+        if urlString == "https://www.instagram.com/" {
+            webView.load(URLRequest(url: authURL))
+        }
+
         guard let range = urlString.range(of: "#access_token=") else {
             decisionHandler(.allow)
             return
